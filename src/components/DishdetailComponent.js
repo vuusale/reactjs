@@ -4,10 +4,11 @@ import { Card, CardText, CardBody, CardImg, CardTitle } from 'reactstrap';
 class Dishdetail extends Component {
 
     renderComments({comments}) {
+        
         if (!comments) return(<div></div>);
         const coms = comments.map(comment => {
             const date = new Date(comment.date);
-            
+
             return(
                 <li key={comment.id}>
                     <p>{comment.comment}</p>
@@ -15,6 +16,7 @@ class Dishdetail extends Component {
                 </li>
             )
         });
+
         return (
             <div className="col-12 col-md-5 m-1">
                 <h4>Comments</h4>

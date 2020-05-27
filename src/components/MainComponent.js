@@ -15,6 +15,7 @@ import FunctionalDishdetail from './FunctionalDishdetailComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Contact from './ContactComponent';
+import About from './AboutComponent';
 import Demo from './DemoComponent';
 
 class Main extends Component {
@@ -25,7 +26,8 @@ class Main extends Component {
       dishes: DISHES,
       comments: COMMENTS,
       promotions: PROMOTIONS,
-      leaders: LEADERS
+      leaders: LEADERS,
+      companies: companies
     };
   }
 
@@ -57,7 +59,8 @@ class Main extends Component {
           <Route exact path='/menu' component={() => <FunctionalMenu dishes={this.state.dishes} />} />
           <Route path="/menu/:dishId" component={DishWithId} />
           <Route exact path='/contactus' component={Contact} />
-          <Route exact path='/demo' component={() => <Demo companies={companies} />} />
+          <Route exact path='/aboutus' component={() => <About leaders={this.state.leaders} />} />
+          <Route exact path='/demo' component={() => <Demo companies={this.state.companies} />} />
           <Redirect to='/home' />
         </Switch>
         <Footer />

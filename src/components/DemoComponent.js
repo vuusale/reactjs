@@ -1,10 +1,14 @@
 import React from 'react';
-import { Card, CardImg, CardTitle, CardBody, CardText, Media } from 'reactstrap';
+import { Media, 
+    Card, CardImg, CardTitle, CardBody, CardText, CardSubtitle, CardLink,
+    ListGroup, ListGroupItem, CardHeader } from 'reactstrap';
+import { companies } from '../shared/companies';
+
 
 function RenderCard({ company }) {
     
     return(
-        <Card >
+        <Card>
             <CardImg src={company.logo} alt={company.name} />
             <CardBody>
                 <CardTitle>{company.name}</CardTitle>
@@ -14,13 +18,14 @@ function RenderCard({ company }) {
     );
 }
 
-const Demo = props => {
+function Demo(props) {
+
     const imgStyle = {
         maxHeight: 128,
         maxWidth: 128
     }
 
-    const companiesMedia = props.companies.results.results.map(company => {
+    const companiesMedia = companies.results.results.map(company => {
         return (
           <div key={company.id} className="col-12 mt-5">
             <Media tag="li">
@@ -36,7 +41,7 @@ const Demo = props => {
         );
     });
     
-    const companies = props.companies.results.results.map(company => {
+    const companiesCard = companies.results.results.map(company => {
         return (
             <div key={company.id} className="col-12 col-md-5 m-1">
                 <RenderCard company={company} />
@@ -47,7 +52,7 @@ const Demo = props => {
     return (
         <div className="container">
             <div className="row row-content">
-                {companies}
+                {companiesCard}
                 {companiesMedia}
             </div>
         </div>

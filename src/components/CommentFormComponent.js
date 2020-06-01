@@ -25,8 +25,8 @@ class CommentForm extends Component {
     }
 
     handleSubmit(values) {
-        console.log("Current state is: " + JSON.stringify(values));
-        alert("Current state is: " + JSON.stringify(values));
+        this.toggleModal();
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     render() {
@@ -55,22 +55,22 @@ class CommentForm extends Component {
                             </Col>
                         </Row>
 
-                        <Label htmlFor="name">Your Name</Label>
+                        <Label htmlFor="author">Your Name</Label>
                         <Row className="form-group">
                             <Col>
                                 <Control.text 
-                                model=".name"
+                                model=".author"
                                 className="form-control"
                                 validators={{
                                     required, minLength: minLength(3), maxLength: maxLength(15)
                                 }}
-                                id="name" 
-                                name="name"
+                                id="author" 
+                                name="author"
                                 placeholder="Your Name"
                                 />
                             <Errors
                                     className="text-danger"
-                                    model=".name"
+                                    model=".author"
                                     show="touched"
                                     messages={{
                                         required: 'Required',
@@ -81,14 +81,14 @@ class CommentForm extends Component {
                             </Col>
                         </Row>
 
-                        <Label htmlFor="message">Comment</Label>
+                        <Label htmlFor="comment">Comment</Label>
                         <Row className="form-group">
                             <Col>
                                 <Control.textarea 
-                                    model=".message" 
+                                    model=".comment" 
                                     className="form-control"
-                                    id="message" 
-                                    name="message" 
+                                    id="comment" 
+                                    name="comment" 
                                     rows="12" 
                                     />
                             </Col>

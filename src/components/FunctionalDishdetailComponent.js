@@ -4,7 +4,7 @@ import { Card, CardText, CardBody, CardImg, CardTitle,
 import { Link } from 'react-router-dom';
 import CommentForm from './CommentFormComponent';
 
-function RenderComments({comments}) {
+function RenderComments({comments, addComment, dishId}) {
     
     if (!comments) return(<div></div>);
 
@@ -25,7 +25,10 @@ function RenderComments({comments}) {
             <ul className="list-unstyled">
                 {coms}
             </ul>
-            <CommentForm />
+            <CommentForm 
+                dishId={dishId} 
+                addComment={addComment} 
+            />
         </div>
     );
 }
@@ -62,7 +65,11 @@ const FunctionalDishdetail = props => {
             </div>
             <div className="row">
                 <RenderDish dish={props.dish} />
-                <RenderComments comments={props.comments} />
+                <RenderComments 
+                    comments={props.comments}
+                    addComment={props.addComment}
+                    dishId={props.dish.id}
+                />
             </div>
         </div>
         

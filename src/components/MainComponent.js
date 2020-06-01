@@ -1,8 +1,6 @@
 import React, { Component } from 'react'; 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
-// import Menu from './MenuComponent';
-// import Dishdetail from './DishdetailComponent';
 import Home from './HomeComponent';
 import FunctionalMenu from './functionalMenuComponent';
 import FunctionalDishdetail from './FunctionalDishdetailComponent';

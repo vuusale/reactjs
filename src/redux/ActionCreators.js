@@ -179,7 +179,6 @@ export const postFeedback = feedback => dispatch => {
         credentials: 'same-origin'
     })
         .then(response => {
-            console.log('first then: ', response)
             if (response.ok) return response;
             const error = new Error(`Error ${response.status}: ${response.statusText}`)
             error.response = response;

@@ -44,7 +44,7 @@ class CommentForm extends Component {
                                 <Label htmlFor="rating">Rating</Label>
                                 <Control.select 
                                 defaultValue="1" 
-                                model=".rating" id="rating" name="rating" className="form-control"
+                                model=".rating" id="rating" name="rating" className="form-control custom-select"
                                 >
                                     <option>1</option>
                                     <option>2</option>

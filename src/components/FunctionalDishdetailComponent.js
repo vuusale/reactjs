@@ -4,6 +4,7 @@ import { Card, CardText, CardBody, CardImg, CardTitle,
 import { Link } from 'react-router-dom';
 import CommentForm from './CommentFormComponent';
 import { Loading } from './LoadingComponent';
+import { baseURL } from '../shared/baseURL';
 
 function RenderComments({comments, addComment, dishId}) {
     
@@ -40,7 +41,7 @@ function RenderDish({dish}) {
     return(
         <div className="col-12 col-md-5 m-1">
             <Card>  
-                <CardImg top width="100%" src={dish.image} alt={dish.name} />
+                <CardImg top width="100%" src={baseURL + dish.image} alt={dish.name} />
                 <CardBody>
                     <CardTitle>{dish.name}</CardTitle>
                     <CardText>{dish.description}</CardText>

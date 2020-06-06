@@ -134,3 +134,65 @@ export const addPromos = promos => ({
     type: ActionTypes.ADD_PROMOS,
     payload: promos
 });
+
+
+export const fetchLeaders = () => dispatch => {
+    dispatch(leadersLoading());
+    
+    return fetch(baseURL + 'leaders')
+        .then(response => {
+            if (response.ok) return response;
+            const error = new Error(`Error ${response.status}: ${response.statusText}`)
+            error.response = response;
+            throw error;
+        }, 
+        error => {
+            const errMsg = new Error(error.message);
+            throw errMsg;
+        })  
+        .then(response => response.json())
+        .then(leaders => dispatch(addLeaders(leaders)))
+        .catch(error => dispatch(leadersFailed(error.message)));
+}
+
+export const leadersLoading = () => ({
+    type: ActionTypes.LEADERS_LOADING
+});
+
+export const leadersFailed = errMsg => ({
+    type: ActionTypes.LEADERS_FAILED,
+    payload: errMsg
+});
+
+export const addLeaders = leaders => ({
+    type: ActionTypes.ADD_LEADERS,
+    payload: leaders
+});
+
+export const postFeedback = feedback => dispatch => {
+    return fetch(baseURL + 'feedback', {
+        method: 'POST',
+        body: JSON.stringify(feedback),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'same-origin'
+    })
+        .then(response => {
+            console.log('first then: ', response)
+            if (response.ok) return response;
+            const error = new Error(`Error ${response.status}: ${response.statusText}`)
+            error.response = response;
+            throw error;
+        }, 
+        error => {
+            const errMsg = new Error(error.message);
+            throw errMsg;
+        })
+        .then(response => response.json())
+        .then(response => alert(`Thank you for your feedback!\n${JSON.stringify(response)}`))
+        .catch(error => {
+            console.log(`Post comments ${error.message}`);
+            alert(`Your comment could not be posted\nError: ${error.message}`)
+        })
+}

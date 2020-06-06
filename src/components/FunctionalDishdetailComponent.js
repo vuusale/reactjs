@@ -6,7 +6,7 @@ import CommentForm from './CommentFormComponent';
 import { Loading } from './LoadingComponent';
 import { baseURL } from '../shared/baseURL';
 
-function RenderComments({comments, addComment, dishId}) {
+function RenderComments({comments, postComment, dishId}) {
     
     if (!comments) return(<div></div>);
 
@@ -29,7 +29,7 @@ function RenderComments({comments, addComment, dishId}) {
             </ul>
             <CommentForm 
                 dishId={dishId} 
-                addComment={addComment} 
+                postComment={postComment} 
             />
         </div>
     );
@@ -89,7 +89,7 @@ const FunctionalDishdetail = props => {
                 <RenderDish dish={props.dish} />
                 <RenderComments 
                     comments={props.comments}
-                    addComment={props.addComment}
+                    postComment={props.postComment}
                     dishId={props.dish.id}
                 />
             </div>
